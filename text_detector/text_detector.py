@@ -106,6 +106,17 @@ class TextDetector():
         return im_mask
 
 
+    def sameLine(self,box,boxes):
+        List=[]
+        c=(self.box[3]-self.box[1])/4
+        for i in len(boxes):
+            if self.box[0] >= boxes[i][0]-c & self.box[0] <= box[i][0]+c:
+                list.append(box)
+
+        return List
+
+
+
     def process(self, frame):
         if not self.args.keep_aspect_ratio:
             # Resize the image to a target size.
@@ -182,16 +193,6 @@ class TextDetector():
             texts.append(text)
         return (boxes, classes, scores, masks, texts)
 
-
-        def sameLine(self,box,boxes):
-            List=[]
-            a=(box[2]-box[0])/4
-            for i in len(boxes):
-                for x1 in len(box):
-                if box[x1]-a<self.box<box[x1]+a:
-                    List.append(box)
-
-        return List
 
 
 

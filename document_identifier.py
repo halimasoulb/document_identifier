@@ -164,8 +164,8 @@ def main():
             # Visualize masks.
             frame = visualizer(frame, boxes, classes, scores, masks, texts)
 
-            line_indexes=text_detector.sameLine(boxe[0],boxes)
-            print(line_indexes)
+            line_indexes=text_detector.sameLine(boxes[0][1],boxes)
+            print(line_indexes )
           
             for text,boxe in zip(texts,boxes):
               print("{} : {}".format(text,boxe))
