@@ -164,14 +164,13 @@ def main():
             # Visualize masks.
             frame = visualizer(frame, boxes, classes, scores, masks, texts)
 
-            line_indexes=text_detector.sameLine(boxes[0][1],boxes)
-            print(line_indexes )
-          
+            for i in boxes:
+              line_indexes=text_detector.sameLine(i,boxes)
+              print(line_indexes)
+
+            
             for text,boxe in zip(texts,boxes):
               print("{} : {}".format(text,boxe))
-
-
-           
 
 
             cv2.imshow('Results', frame)

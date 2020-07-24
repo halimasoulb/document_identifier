@@ -107,13 +107,13 @@ class TextDetector():
 
 
     def sameLine(self,box,boxes):
-        List=[]
-        c=(self.box[3]-self.box[1])/4
+        margin=[]
+        c=(box[3]-box[1])/4
         for i in len(boxes):
-            if self.box[0] >= boxes[i][0]-c & self.box[0] <= box[i][0]+c:
-                list.append(box)
+            if box[1]-margin >= boxes[i][0]-c & box[1] <= boxes[i][0]+margin:
+                margin.append(i)
 
-        return List
+        return margin
 
 
 
