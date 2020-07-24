@@ -171,8 +171,8 @@ def main():
               
 
             
-            for text,boxe in zip(texts,boxes):
-              print("{} : {}".format(text,boxe))
+            #for text,boxe in zip(texts,boxes):
+             # print("{} : {}".format(text,boxe))
 
 
             cv2.imshow('Results', frame)
