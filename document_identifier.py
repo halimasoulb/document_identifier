@@ -159,14 +159,16 @@ def main():
         
             boxes, classes, scores, masks, texts=text_detector.process(frame)
 
-            
 
             # Visualize masks.
             frame = visualizer(frame, boxes, classes, scores, masks, texts)
 
-            for i in boxes:
-              line_indexes=text_detector.sameLine(i,boxes)
-              print(line_indexes)
+            line_indexes=text_detector.sameLine(boxes[0],boxes)
+            print(line_indexes)
+
+            
+              
+              
 
             
             for text,boxe in zip(texts,boxes):
