@@ -169,7 +169,7 @@ def main():
             for box in line_boxes:
               boxes=boxes.tolist()
               index=boxes.index(box)
-              print(texts[index],end=' ',flash=True)
+              print(texts[index],end=' ',flush=True)
             
             for text,boxe in zip(texts,boxes):
              print("{} : {}".format(text,boxe))
