@@ -166,8 +166,9 @@ def main():
             line_boxes=text_detector.same_line_boxes(boxes[1],boxes)
             print(line_boxes)
 
-            for i in range(len(line_boxes)):
-              print(texts[i],end=' ')
+            for i in line_boxes:
+              index=boxes.index(i)
+              print(texts[index],end=' ')
             
             
             for text,boxe in zip(texts,boxes):

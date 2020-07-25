@@ -112,8 +112,8 @@ class TextDetector():
         y1=box[1]
         for i in range(len(boxes)):
             if boxes[i][1]-margin <= y1 and boxes[i][1]+margin >= y1:
-                line_boxes.append(i)
-        return boxes[line_boxes]
+                line_boxes.append(boxes[i])
+        return line_boxes
 
 
 
