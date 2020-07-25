@@ -71,7 +71,7 @@ def build_argparser():
                           required=True, type=str, metavar='"<path>"')
         args.add_argument('-m_td', '--text_dec_model',
                           help='Required. Path to an .xml file with a trained text recognition model '
-                               '(decoder part).',
+                                 '(decoder part).',
                           required=True, type=str, metavar='"<path>"')
         args.add_argument('-i',
                           dest='input_source',
@@ -163,16 +163,15 @@ def main():
             # Visualize masks.
             frame = visualizer(frame, boxes, classes, scores, masks, texts)
 
-            line_indexes=text_detector.sameLine(boxes[0],boxes)
-            print(line_indexes)
+            line_boxes=text_detector.same_line_boxes(boxes[1],boxes)
+            print(line_boxes)
 
+            for i in range(len(line_boxes)):
+              print(texts[i],end=' ')
             
-              
-              
-
             
-            #for text,boxe in zip(texts,boxes):
-             # print("{} : {}".format(text,boxe))
+            for text,boxe in zip(texts,boxes):
+             print("{} : {}".format(text,boxe))
 
 
             cv2.imshow('Results', frame)

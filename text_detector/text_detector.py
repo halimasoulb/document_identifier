@@ -106,14 +106,14 @@ class TextDetector():
         return im_mask
 
 
-    def sameLine(self,box,boxes):
-        line_indexes=[]
-        margin=(box[3]-box[1])
+    def same_line_boxes(self,box,boxes):
+        line_boxes=[]
+        margin=(box[3]-box[1])/4
         y1=box[1]
         for i in range(len(boxes)):
             if boxes[i][1]-margin <= y1 and boxes[i][1]+margin >= y1:
-                    line_indexes.append(i)
-        return line_indexes
+                line_boxes.append(i)
+        return boxes[line_boxes]
 
 
 
