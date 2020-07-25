@@ -166,10 +166,10 @@ def main():
             line_boxes=text_detector.same_line_boxes(boxes[1],boxes)
             print(line_boxes)
 
-            for i in line_boxes:
-              index=boxes.index(i)
-              print(texts[index],end=' ')
-            
+            for box in line_boxes:
+              boxes=boxes.tolist()
+              index=boxes.index(box)
+              print(texts[index],end=' ',flash=True)
             
             for text,boxe in zip(texts,boxes):
              print("{} : {}".format(text,boxe))
