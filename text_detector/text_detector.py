@@ -184,10 +184,6 @@ class TextDetector():
             texts.append(text)
         return (boxes, classes, scores, masks, texts)
 
-
-
-
-
     def same_line_boxes(self,box,boxes):
         line_boxes=[]
         if box is not None:
@@ -199,21 +195,19 @@ class TextDetector():
                         line_boxes.append(boxes[i])
                         boxes[i]=None
             line_boxes=sorted(line_boxes, key=lambda box:box[0]) 
-    return line_boxes
-
-
+        return line_boxes
 
 
     def text(self,boxes,texts):
         lines=[]
         for box in boxes:
-            line_boxes=same_line_boxes(box,boxes)
+            line_boxes=self.same_line_boxes(box,boxes)
             if len(line_boxes)>0:
                 lines.append(line_boxes)
-            #for box in boxes_list:
+                #for box in boxes_list:
                 #index=boxes.index(box)
                 #lines.append(texts[index])
-    return lines            
+        return lines            
         
 
 
