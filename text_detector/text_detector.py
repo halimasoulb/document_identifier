@@ -207,7 +207,9 @@ class TextDetector():
         if boxes[i]!=None:
             for box in boxes:
                 boxes_list=same_line_boxes(box,boxes)
-                lines.append(boxes_list)
+                for box in boxes_list:
+                    index=boxes.index(box)
+                    lines.append(texts[index])
     return lines            
         
 
