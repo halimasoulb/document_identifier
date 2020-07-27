@@ -113,7 +113,8 @@ class TextDetector():
         for i in range(len(boxes)):
             if boxes[i][1]-margin <= y1 and boxes[i][1]+margin >= y1:
                 line_boxes.append(boxes[i])
-        return line_boxes
+                sorted_list=sorted(line_boxes, key=lambda text_detector:text_detector) 
+        return sorted_list
 
 
 
