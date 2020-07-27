@@ -190,15 +190,16 @@ class TextDetector():
 
     def same_line_boxes(self,box,boxes):
         line_boxes=[]
-        margin=(box[3]-box[1])/4
-        y1=box[1]
-        for i in range(len(boxes)):
-            if boxes[i] is not None:
-                if boxes[i][1]-margin <= y1 and boxes[i][1]+margin >= y1:
-                line_boxes.append(boxes[i])
-                boxes[i]=None
+        if box is not None:
+            margin=(box[3]-box[1])/4
+            y1=box[1]
+            for i in range(len(boxes)):
+                if boxes[i] is not None:
+                    if boxes[i][1]-margin <= y1 and boxes[i][1]+margin >= y1:
+                        line_boxes.append(boxes[i])
+                        boxes[i]=None
             line_boxes=sorted(line_boxes, key=lambda box:box[0]) 
-        return sorted_list
+    return sorted_list
 
 
 
