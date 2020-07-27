@@ -106,16 +106,6 @@ class TextDetector():
         return im_mask
 
 
-    def same_line_boxes(self,box,boxes):
-        line_boxes=[]
-        margin=(box[3]-box[1])/4
-        y1=box[1]
-        for i in range(len(boxes)):
-            if boxes[i][1]-margin <= y1 and boxes[i][1]+margin >= y1:
-                line_boxes.append(boxes[i])
-                sorted_list=sorted(line_boxes, key=lambda text_detector:text_detector) 
-        return sorted_list
-
 
 
     def process(self, frame):
@@ -193,6 +183,33 @@ class TextDetector():
 
             texts.append(text)
         return (boxes, classes, scores, masks, texts)
+
+
+
+
+
+    def same_line_boxes(self,box,boxes):
+        line_boxes=[]
+        margin=(box[3]-box[1])/4
+        y1=box[1]
+        for i in range(len(boxes)):
+            if boxes[i][1]-margin <= y1 and boxes[i][1]+margin >= y1:
+                line_boxes.append(boxes[i])
+                boxes[i]=None
+                sorted_list=sorted(line_boxes, key=lambda text_detector:text_detector) 
+        return sorted_list
+
+
+
+
+    def text(boxes,texts):
+        lines=[]
+        if boxes[i]!=None:
+            for box in boxes:
+                boxes_list=same_line_boxes(box,boxes)
+                lines.append(boxes_list)
+    return lines            
+        
 
 
 

@@ -164,8 +164,8 @@ def main():
             frame = visualizer(frame, boxes, classes, scores, masks, texts)
             boxes=boxes.tolist()
 
-            sorted_list=text_detector.same_line_boxes(boxes[1],boxes)
-            print(sorted_list)
+            sorted_list=text_detector.same_line_boxes(boxes[3],boxes)
+            #print(sorted_list)
 
             for box in sorted_list:
               index=boxes.index(box)
