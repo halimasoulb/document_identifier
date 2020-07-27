@@ -193,10 +193,11 @@ class TextDetector():
         margin=(box[3]-box[1])/4
         y1=box[1]
         for i in range(len(boxes)):
-            if boxes[i][1]-margin <= y1 and boxes[i][1]+margin >= y1:
+            if boxes[i] is not None:
+                if boxes[i][1]-margin <= y1 and boxes[i][1]+margin >= y1:
                 line_boxes.append(boxes[i])
                 boxes[i]=None
-                sorted_list=sorted(line_boxes, key=lambda text_detector:text_detector) 
+            line_boxes=sorted(line_boxes, key=lambda box:box[0]) 
         return sorted_list
 
 
