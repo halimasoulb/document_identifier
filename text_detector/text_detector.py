@@ -208,8 +208,8 @@ class TextDetector():
         lines=[]
         for box in boxes:
             line_boxes=same_line_boxes(box,boxes)
-            if len(line_boxes)>0
-            lines.append(line_boxes)
+            if len(line_boxes)>0:
+                lines.append(line_boxes)
             #for box in boxes_list:
                 #index=boxes.index(box)
                 #lines.append(texts[index])
