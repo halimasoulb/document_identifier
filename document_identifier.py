@@ -167,12 +167,20 @@ def main():
             line_boxes=text_detector.same_line_boxes(boxes[1],boxes)
             print(line_boxes)
             
+            sorted_list=sorted(line_boxes, key=lambda text_detector:text_detector.box[0]) 
+            print(sorted_list)
 
             for box in line_boxes:
               index=boxes.index(box)
               print(texts[index],end=' ',flush=True)
 
-            print("/n")  
+
+            print("/n") 
+            
+
+
+
+
             
             for text,boxe in zip(texts,boxes):
              print("{} : {}".format(text,boxe))
