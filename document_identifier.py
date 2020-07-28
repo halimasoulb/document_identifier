@@ -163,10 +163,12 @@ def main():
             # Visualize masks.
             frame = visualizer(frame, boxes, classes, scores, masks, texts)
             boxes=boxes.tolist()
-            print(boxes)
+            #print(boxes)
 
             lines=text_detector.text(boxes,texts)
-            print(boxes)
+             
+
+            #print(boxes)
             #print(sorted_list)
 
             #for box in lines:
