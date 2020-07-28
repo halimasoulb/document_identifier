@@ -208,10 +208,9 @@ class TextDetector():
         lines=sorted(lines, key=lambda boxes:boxes[0][1]) 
         for i in range(len(lines)):
             lines[i]=map(lambda box:texts[boxes.index(box)], lines[i])
-            #lines=" ".join(list(texts_lines))
-            #lines="\n".join(list(texts_lines))
-            print(lines)
-        return lines            
+            lines[i]=" ".join(lines[i])
+        texts="\n".join(lines)
+        return texts            
         
 
 

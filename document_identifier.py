@@ -165,7 +165,8 @@ def main():
             boxes=boxes.tolist()
             #print(boxes)
 
-            lines=text_detector.text(boxes,texts)
+            texts=text_detector.text(boxes,texts)
+            print(texts)
              
 
             #print(boxes)
@@ -174,17 +175,6 @@ def main():
             #for box in lines:
               #index=boxes.index(box)
               #print(texts[index],end=' ',flush=True)
-
-
-            print("/n") 
-            
-
-
-
-
-            
-            for text,boxe in zip(texts,boxes):
-             print("{} : {}".format(text,boxe))
 
 
             cv2.imshow('Results', frame)
