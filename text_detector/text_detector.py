@@ -205,12 +205,12 @@ class TextDetector():
             line_boxes=self.same_line_boxes(box,tmp_boxes)
             if len(line_boxes)>0:
                 lines.append(line_boxes)
-                lines=sorted(lines, key=lambda boxes:boxes[0][1]) 
-                for line in lines:
-                    lines=map(lambda box:texts.index(line), lines[box])
-                    #texts_lines=sorted(texts_lines, key=lambda box:box[0]) 
-                    lines=" ".join(list(texts_lines))
-                lines="\n".join(list(texts_lines))
+        lines=sorted(lines, key=lambda boxes:boxes[0][1]) 
+        for i in range(len(lines)):
+            lines[i]=map(lambda box:texts[boxes.index(box)], lines[i])
+            #lines=" ".join(list(texts_lines))
+            #lines="\n".join(list(texts_lines))
+            print(lines)
         return lines            
         
 
