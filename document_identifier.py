@@ -25,6 +25,8 @@ from argparse import ArgumentParser, SUPPRESS
 
 import cv2
 import numpy as np
+import re
+import datetime
 
 
 from text_detector import TextDetector 
@@ -163,20 +165,19 @@ def main():
             # Visualize masks.
             frame = visualizer(frame, boxes, classes, scores, masks, texts)
             boxes=boxes.tolist()
-            #print(boxes)
+            
+            text=text_detector.text(boxes,texts)
 
-            texts=text_detector.text(boxes,texts)
-            print(texts)
-             
-
-            #print(boxes)
-            #print(sorted_list)
-
-            #for box in lines:
-              #index=boxes.index(box)
-              #print(texts[index],end=' ',flush=True)
+            result=re.search(r"[0-9]{8}", text).group()
+            date_de_validite=datetime.datetime.strptime(result, '%d%m%Y')
+            print(' Date de validite:', date_de_validite.date())
+            #print(result.group())
+            #print(text.replace("ne le", "Date de naissance :" ))
+            #print(text.replace("royaume du maroc", " "))
 
 
+
+ 
             cv2.imshow('Results', frame)
             key = cv2.waitKey(0)
             esc_code = 27
