@@ -28,7 +28,7 @@ import numpy as np
 import re
 import datetime
 
-
+from document_identifier import DocumentIdentifier
 from text_detector import TextDetector 
 from utils.tracker import StaticIOUTracker
 from utils.visualizer import Visualizer
@@ -133,6 +133,7 @@ def main():
         log.basicConfig(format='[ %(levelname)s ] %(message)s' , level=log.INFO, stream=sys.stdout)
         args = build_argparser().parse_args()
         text_detector = TextDetector(args) 
+        document_identifier = DocumentIdentifier('./test/config.js')
 
         try:
             input_source = int(args.input_source)
@@ -167,7 +168,12 @@ def main():
             boxes=boxes.tolist()
             
             text=text_detector.text(boxes,texts)
-            print(text)
+            information=document_identifier.process(text)
+
+            print(information)
+
+          
+            
 
             #result1=re.search(r" [0-9]{2}[ ,1]?[0-9]{2}[ ,1]?[0-9]{4}", text).group()
             #print(re.sub(r"([0-9]{2}[ ,1]?)([0-9]{2}[ ,1]?)([0-9]{4})", r"date de naissance: \1-\2-\3 ", result1))
