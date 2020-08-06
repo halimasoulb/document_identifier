@@ -4,19 +4,25 @@ import json
 import sys
 import os
 
-import logging as log
-import cv2
-import numpy as np
-
-from openvino.inference_engine import IECore
 
 
 class DocumentIdentifier():
-	def __init__(self, args):
+	def __init__(self, config_file):
+		with open(config_file) as json_file:
+			self.documents = json.load(json_file)
+
 		
 
-	def process(self, frame):
-		return (boxes, classes, scores, masks, texts)
+	def process(self, text):
+		for doc in self.documents:
+			doc_id = re.compile(str(doc['re']))
+			match = doc_id.match(text)
+			if match is not None:
+				result = match.groupdict()
+				result['Document name'] = doc['name']
+				for key, value in result.items():
+					result[key] = value.upper()
+				return json.dumps(result, indent=4)
 
-    def json_file(self,text):
+    
     	
