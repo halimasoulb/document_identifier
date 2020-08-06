@@ -167,13 +167,14 @@ def main():
             boxes=boxes.tolist()
             
             text=text_detector.text(boxes,texts)
+            print(text)
 
-            result1=re.search(r" [0-9]{2}[ ,1]?[0-9]{2}[ ,1]?[0-9]{4}", text).group()
-            print(re.sub(r"([0-9]{2}[ ,1]?)([0-9]{2}[ ,1]?)([0-9]{4})", r"date de naissance: \1-\2-\3 ", result1))
+            #result1=re.search(r" [0-9]{2}[ ,1]?[0-9]{2}[ ,1]?[0-9]{4}", text).group()
+            #print(re.sub(r"([0-9]{2}[ ,1]?)([0-9]{2}[ ,1]?)([0-9]{4})", r"date de naissance: \1-\2-\3 ", result1))
 
-            result=re.search(r"[0-9]{8}", text).group()
-            date_de_validite=datetime.datetime.strptime(result, '%d%m%Y')
-            print(' Date de validite:', date_de_validite.date())
+            #result=re.search(r"[0-9]{8}", text).group()
+            #date_de_validite=datetime.datetime.strptime(result, '%d%m%Y')
+            #print(' Date de validite:', date_de_validite.date())
             #print(result.group())
             #print(text.replace("ne le", "Date de naissance :" ))
             #print(text.replace("royaume du maroc", " "))
