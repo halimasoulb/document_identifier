@@ -126,7 +126,10 @@ def build_argparser():
         args.add_argument('--show_boxes',
                           help='Optional. Show bounding boxes.',
                           action='store_true')
-       
+        args.add_argument('-c', '--config',
+                          help='Required. Path to an .xml file with a trained Mask-RCNN model with '
+                               'additional text features output.',
+                          required=True, type=str, metavar='"<path>"')
         return parser
        
 
@@ -135,7 +138,7 @@ def main():
         log.basicConfig(format='[ %(levelname)s ] %(message)s' , level=log.INFO, stream=sys.stdout)
         args = build_argparser().parse_args()
         text_detector = TextDetector(args) 
-        document_identifier = DocumentIdentifier('config.js')
+        document_identifier = DocumentIdentifier(args.config)
 
         try:
             input_source = int(args.input_source)

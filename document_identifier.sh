@@ -27,6 +27,7 @@ python3 ./document_identifier.py \
 	-m_m ./models/intel/$TXT_DETECT_MODEL/FP16/$TXT_DETECT_MODEL.xml \
 	-m_te ./models/intel/$TXT_ENC_MODEL/FP16/$TXT_ENC_MODEL.xml \
 	-m_td ./models/intel/$TXT_DEC_MODEL/FP16/$TXT_DEC_MODEL.xml \
+	-c ./config.js \
 	-pt $THRESHOLD \
 	-i $INPUT 
 
