@@ -28,6 +28,8 @@ import numpy as np
 import re
 import datetime
 
+import json
+
 from document_identifier import DocumentIdentifier
 from text_detector import TextDetector 
 from utils.tracker import StaticIOUTracker
@@ -133,7 +135,7 @@ def main():
         log.basicConfig(format='[ %(levelname)s ] %(message)s' , level=log.INFO, stream=sys.stdout)
         args = build_argparser().parse_args()
         text_detector = TextDetector(args) 
-        document_identifier = DocumentIdentifier('./test/config.js')
+        document_identifier = DocumentIdentifier('config.js')
 
         try:
             input_source = int(args.input_source)
@@ -168,9 +170,9 @@ def main():
             boxes=boxes.tolist()
             
             text=text_detector.text(boxes,texts)
-            information=document_identifier.process(text)
+            result=document_identifier.process(text)
 
-            print(information)
+            print(json.dumps(result, indent=4))
 
           
             

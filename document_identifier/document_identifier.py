@@ -22,7 +22,9 @@ class DocumentIdentifier():
 				result['Document name'] = doc['name']
 				for key, value in result.items():
 					result[key] = value.upper()
-				return json.dumps(result, indent=4)
+				else:
+					return None
+				return result
 
     
     	
