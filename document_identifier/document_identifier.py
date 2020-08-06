@@ -22,9 +22,8 @@ class DocumentIdentifier():
 				result['Document name'] = doc['name']
 				for key, value in result.items():
 					result[key] = value.upper()
-				else:
-					return None
 				return result
-
+		
+		return None
     
     	
