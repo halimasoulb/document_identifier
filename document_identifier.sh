@@ -15,7 +15,7 @@ TXT_DETECT_MODEL=text-spotting-0002-detector
 TXT_ENC_MODEL=text-spotting-0002-recognizer-encoder
 TXT_DEC_MODEL=text-spotting-0002-recognizer-decoder
 
-THRESHOLD=0.8
+THRESHOLD=0.7
 
 mkdir -p ./models/
 
