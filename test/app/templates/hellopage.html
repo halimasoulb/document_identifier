@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello {{name}}</title>
+	<meta charset="utf-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<h1>Bonjour {{ name|capitalize }} voici vos informations</h1>
+<p></p>
+<p></p>
+<table class="table table-bordered" summary="informations cin">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Nom</th>
+    <td>el youssefi</td>
+  </tr>
+  </thead>
+  <thead class="thead-dark">
+  <tr>
+    <th scope="row">Prenom</th>
+    <td>jamal</td>
+  </tr>
+</thead>
+<thead class="thead-dark">
+  <tr>
+  	<th scope="row">Date de naissance</th>
+  	<td>31.01.1969</td>
+  </tr>
+</thead>
+<thead class="thead-dark">
+  <tr>
+  	<th scope="row">Lieu de naissance</th>
+  	<td>LGHARBIA SIDI BENNOUR</td> 	
+  </tr>
+</thead>
+<thead class="thead-dark">
+<tr>
+	 <th scope="row">Date de validite</th>
+	 <td>15.05.2020</td>
+	
+</tr>
+</thead>
+<thead class="thead-dark">
+<tr>
+	<th scope="row">Numero</th>
+	<td>M220703</td >
+</tr>
+</thead> 
+</table>
+
+</body>
+</html>
