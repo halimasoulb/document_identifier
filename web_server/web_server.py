@@ -3,7 +3,6 @@
 import os
 import sys
 
-
 from flask import Flask, render_template, Response, jsonify, request
 from threading import Thread
 
@@ -22,4 +21,4 @@ class WebServer(Thread):
 			return render_template('index.html')
 		if __name__ == '__main__':
 			logger.debug("startng the application")
-		self.app.run(host='0.0.0.0', port=str(self.port), threaded=True)
+		self.app.run(host='0.0.0.0', port=self.port, threaded=True)
