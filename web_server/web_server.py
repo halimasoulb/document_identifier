@@ -5,17 +5,18 @@ import sys
 
 
 from flask import Flask, render_template, Response, jsonify, request
-#import threading
+from threading import Thread
 
-class WebServer():
+class WebServer(Thread):
 	def __init__(self, port=9500):
+		Thread.__init__(self)
 		self.app = Flask(__name__)
 		self.port = port
 		
 
-	def handler(self):
+	def run(self):
+		print("Web Server thread started")
 		app = self.app
-		#threading.Thread(target=index).start()
 		@app.route('/')
 		def index():
 			return render_template('index.html')

@@ -32,6 +32,7 @@ import json
 
 from document_identifier import DocumentIdentifier
 from text_detector import TextDetector 
+from web_server import WebServer 
 from utils.tracker import StaticIOUTracker
 from utils.visualizer import Visualizer
 
@@ -139,6 +140,8 @@ def main():
         args = build_argparser().parse_args()
         text_detector = TextDetector(args) 
         document_identifier = DocumentIdentifier(args.config)
+        web_server = WebServer()
+        web_server.start()
 
         try:
             input_source = int(args.input_source)
