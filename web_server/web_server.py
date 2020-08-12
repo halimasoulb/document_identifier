@@ -33,17 +33,26 @@ class WebServer(Thread):
 		self.app.run(host='0.0.0.0', port=self.port, threaded=True)
 
 	def dataHandler(self): 
+		
+		yield f"data:{json.dumps({'title': 'Please scan your document'})}\n\n"
 		while self.is_alive():
 			self.cv.acquire()
 			while self.document is None:
 				self.cv.wait()
 			if self.document is not None:
-				yield f"data:{json.dumps(self.document)}\n\n"
+				data = {}
+				if 'type' in self.document:
+					data['title'] = self.document['type']
+					del self.document['type']
+				data['body'] = json2html.convert(json = self.document, 
+												 table_attributes="id=\"document-table\" class=\"table table-bordered\"")
+ 
+				yield f"data:{json.dumps(data)}\n\n"
 				self.document = None
 			self.cv.release()
 
 	def push(self, document):
 		self.cv.acquire()
-		self.document = json2html.convert(json = document, table_attributes="id=\"document-table\" class=\"table table-bordered\"")
+		self.document = document.copy()
 		self.cv.notify()
 		self.cv.release()
