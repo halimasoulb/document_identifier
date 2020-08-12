@@ -12,14 +12,19 @@
                 var source = new EventSource("/data");
                 source.onmessage = function(event) {
                     var data = JSON.parse(event.data);
-                    document.getElementById("document").innerHTML = data;
+                    if(data.title){
+                      document.getElementById("title").innerHTML = data.title;
+                    }
+                    if(data.body){
+                      document.getElementById("document").innerHTML = data.body
+                    }
                 }
             })
         </script>
     </head>
     <body>
       <div id="container">
-        <div id="title" >Please scan your document</div>
+        <div id="title" ></div>
         <div id="document"></div>     
       </div>
     </body>
