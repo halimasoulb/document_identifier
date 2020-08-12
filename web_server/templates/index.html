@@ -8,20 +8,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-	  <!--link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" -->
+	  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" >
     <script type="text/javascript">
       var source = new EventSource("/data");
       source.onmessage = function(event) {
         var data = JSON.parse(event.data);
-        document.getElementById("text").innerHTML = data;
+        document.getElementById("document").innerHTML = data;
       }
     </script>
 </head>
 <body>
 <h1>Bonjour voici vos informations</h1>
-<div id="text">
-  
+<div class="flex">
+<div id="document">
 </div>
-
+</div>
 </body>
 </html>
