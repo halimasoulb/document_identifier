@@ -12,7 +12,8 @@
     <script type="text/javascript">
       var source = new EventSource("/data");
       source.onmessage = function(event) {
-        document.getElementById("text").innerHTML;
+        var data = JSON.parse(event.data);
+        document.getElementById("text").innerHTML = data;
       }
     </script>
 </head>
