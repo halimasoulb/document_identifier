@@ -7,7 +7,7 @@ fi
 
 INPUT=$1
 
-pip3 freeze | grep -q flask || pip3 install flask --user
+pip3 freeze | grep -q Flask || pip3 install Flask --user
 pip3 freeze | grep -q json2html || pip3 install json2html --user
 
 source /opt/intel/openvino/bin/setupvars.sh 
