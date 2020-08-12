@@ -29,7 +29,8 @@ class WebServer(Thread):
 
 		if __name__ == '__main__':
 			logger.debug("startng the application")
-		self.app.run(host='0.0.0.0', port=str(self.port), threaded=True)
+
+		self.app.run(host='0.0.0.0', port=self.port, threaded=True)
 
 	def dataHandler(self): 
 		while self.is_alive():

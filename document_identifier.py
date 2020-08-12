@@ -181,6 +181,10 @@ def main():
 
             print(json.dumps(result, indent=4))
 
+            while True:
+              web_server.push(result)
+              cv2.waitKey(1000)
+
          
             cv2.imshow('Results', frame)
             key = cv2.waitKey(0)
