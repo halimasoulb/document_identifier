@@ -44,6 +44,6 @@ class WebServer(Thread):
 
 	def push(self, document):
 		self.cv.acquire()
-		self.document = json2html.convert(json = document)
+		self.document = json2html.convert(json = document, table_attributes="id=\"document-table\" class=\"table table-bordered\"")
 		self.cv.notify()
 		self.cv.release()

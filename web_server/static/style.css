@@ -3,8 +3,7 @@
 
 
 body {
-    background-color: #92a8d2;
-    font-family: Lato;
+   
 }
 
 #container {
@@ -13,12 +12,23 @@ body {
 }
 
 #title {
-    width: 100%;
-    margin: 0 auto;
+    text-align: center;
+    font-family: sans-serif;
+	font-size: 32px;
+	font-weight: bold;
+	margin: 20px;
 }
 
-#ducument {
-    width: 100%;
+#document {
+	width: 50%;
     margin: 0 auto;
+    font-family: sans-serif;
+	font-size: 20px;
+}
+
+#document-table {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #ADFF2F;
 }
 

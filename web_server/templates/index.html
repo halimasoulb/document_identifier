@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Hello {{name}}</title>
-	<meta charset="utf-8">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-	  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" >
-    <script type="text/javascript">
-      var source = new EventSource("/data");
-      source.onmessage = function(event) {
-        var data = JSON.parse(event.data);
-        document.getElementById("document").innerHTML = data;
-      }
-    </script>
-</head>
-<body>
-  <div id="container">
-    <div id="title" ></div>
-    <div id="document"></div>     
-  </div>
-</body>
+<html lang="en"   width="100%">
+    <head>
+    	<title>Document Identifier</title>
+    	<meta charset="utf-8">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" >
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var source = new EventSource("/data");
+                source.onmessage = function(event) {
+                    var data = JSON.parse(event.data);
+                    document.getElementById("document").innerHTML = data;
+                }
+            })
+        </script>
+    </head>
+    <body>
+      <div id="container">
+        <div id="title" >Please scan your document</div>
+        <div id="document"></div>     
+      </div>
+    </body>
 </html>
