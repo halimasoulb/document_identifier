@@ -20,7 +20,10 @@ import os
 import logging as log
 import cv2
 import numpy as np
+
 from utils.visualizer import Visualizer
+from utils.tracker import StaticIOUTracker
+
 
 from openvino.inference_engine import IECore
 SOS_INDEX = 0
@@ -184,9 +187,9 @@ class TextDetector():
                 hidden = decoder_output[self.args.trd_output_cur_hidden]
 
             texts.append(text) 
+        boxes, classes, scores, masks, texts=self.process(frame)
         frame = self.visualizer(frame, boxes, classes, scores, masks, texts)
         boxes=boxes.tolist()
-        text=self.text(boxes,texts)
         return (boxes, texts)
 
     def same_line_boxes(self,box,boxes):

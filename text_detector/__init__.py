@@ -18,3 +18,4 @@
 
 from .text_detector import TextDetector
 
+

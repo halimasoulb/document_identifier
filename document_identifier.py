@@ -158,6 +158,8 @@ def main():
         if isinstance(cap, cv2.VideoCapture):
             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
+        
+
 
         log.info('Starting inference...')
         print("To close the application, press 'CTRL+C' here or switch to the output window and press ESC key")
@@ -166,6 +168,14 @@ def main():
             if not ret:
                 break
         
+            #boxes, classes, scores, masks, texts=text_detector.process(frame)
+
+
+            # Visualize masks.
+            #frame = visualizer(frame, boxes, classes, scores, masks, texts)
+            #boxes=boxes.tolist()
+            
+            text=text_detector.text(text_detector.process(frame))
            
             result=document_identifier.process(text)
 
