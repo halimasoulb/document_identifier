@@ -34,7 +34,7 @@ from document_identifier import DocumentIdentifier
 from text_detector import TextDetector 
 from web_server import WebServer 
 from utils.tracker import StaticIOUTracker
-from utils.visualizer import Visualizer
+
 
 
 class FolderCapture:
@@ -158,8 +158,6 @@ def main():
         if isinstance(cap, cv2.VideoCapture):
             cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
-        
-        visualizer = Visualizer(['__background__', 'text'], show_boxes=args.show_boxes, show_scores=args.show_scores)
 
         log.info('Starting inference...')
         print("To close the application, press 'CTRL+C' here or switch to the output window and press ESC key")
@@ -168,14 +166,6 @@ def main():
             if not ret:
                 break
         
-            boxes, classes, scores, masks, texts=text_detector.process(frame)
-
-
-            # Visualize masks.
-            frame = visualizer(frame, boxes, classes, scores, masks, texts)
-            boxes=boxes.tolist()
-            
-            text=text_detector.text(boxes,texts)
            
             result=document_identifier.process(text)
 
@@ -186,7 +176,7 @@ def main():
               cv2.waitKey(1000)
 
          
-            cv2.imshow('Results', frame)
+            #cv2.imshow('Results', frame)
             key = cv2.waitKey(0)
             esc_code = 27
             if key == esc_code:

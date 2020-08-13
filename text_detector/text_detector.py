@@ -20,6 +20,7 @@ import os
 import logging as log
 import cv2
 import numpy as np
+from utils.visualizer import Visualizer
 
 from openvino.inference_engine import IECore
 SOS_INDEX = 0
@@ -73,6 +74,7 @@ class TextDetector():
         self.text_dec_exec_net = self.ie.load_network(network=text_dec_net, device_name=args.device)
 
         self.hidden_shape = text_dec_net.inputs[args.trd_input_prev_hidden].shape
+        self.visualizer = Visualizer(['__background__', 'text'], show_boxes=args.show_boxes, show_scores=args.show_scores)
         
     def expand_box(self, box, scale):
         w_half = (box[2] - box[0]) * .5
@@ -181,8 +183,11 @@ class TextDetector():
                 text += self.args.alphabet[prev_symbol_index]
                 hidden = decoder_output[self.args.trd_output_cur_hidden]
 
-            texts.append(text)
-        return (boxes, classes, scores, masks, texts)
+            texts.append(text) 
+        frame = self.visualizer(frame, boxes, classes, scores, masks, texts)
+        boxes=boxes.tolist()
+        text=self.text(boxes,texts)
+        return (boxes, texts)
 
     def same_line_boxes(self,box,boxes):
         line_boxes=[]
