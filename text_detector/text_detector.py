@@ -190,7 +190,8 @@ class TextDetector():
         boxes, classes, scores, masks, texts=self.process(frame)
         frame = self.visualizer(frame, boxes, classes, scores, masks, texts)
         boxes=boxes.tolist()
-        return (boxes, texts)
+        texts=self.text(boxes, texts)
+        return (self.boxes, self.texts)
 
     def same_line_boxes(self,box,boxes):
         line_boxes=[]

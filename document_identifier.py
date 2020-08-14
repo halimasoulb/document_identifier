@@ -175,9 +175,9 @@ def main():
             #frame = visualizer(frame, boxes, classes, scores, masks, texts)
             #boxes=boxes.tolist()
             
-            text=text_detector.text(text_detector.process(frame))
+            #text=text_detector.text(text_detector.process(frame))
            
-            result=document_identifier.process(text)
+            result=document_identifier.process(text_detector.process(frame))
 
             print(json.dumps(result, indent=4))
 
@@ -186,7 +186,7 @@ def main():
               cv2.waitKey(1000)
 
          
-            #cv2.imshow('Results', frame)
+            cv2.imshow('Results', frame)
             key = cv2.waitKey(0)
             esc_code = 27
             if key == esc_code:
