@@ -21,9 +21,7 @@ import logging as log
 import cv2
 import numpy as np
 
-from utils.visualizer import Visualizer
-from utils.tracker import StaticIOUTracker
-
+from .visualizer import Visualizer
 
 from openvino.inference_engine import IECore
 SOS_INDEX = 0
@@ -91,8 +89,7 @@ class TextDetector():
         box_exp[2] = x_c + w_half
         box_exp[1] = y_c - h_half
         box_exp[3] = y_c + h_half
-        return box_exp
-        
+        return box_exp        
           
     def segm_postprocess(self, box, raw_cls_mask, im_h, im_w):
         # Add zero border to prevent upsampling artifacts on segment borders.
@@ -110,10 +107,7 @@ class TextDetector():
                                 (x0 - extended_box[0]):(x1 - extended_box[0])]
         return im_mask
 
-
-
-
-    def process(self, frame):
+    def process(self, frame, show=False):
         if not self.args.keep_aspect_ratio:
             # Resize the image to a target size.
             scale_x = self.w / frame.shape[1]
@@ -152,10 +146,6 @@ class TextDetector():
         raw_masks = raw_masks[detections_filter]
         text_features = text_features[detections_filter]
 
-
-        
-
-
         boxes[:, 0::2] /= scale_x
         boxes[:, 1::2] /= scale_y
         masks = []
@@ -187,11 +177,12 @@ class TextDetector():
                 hidden = decoder_output[self.args.trd_output_cur_hidden]
 
             texts.append(text) 
-        boxes, classes, scores, masks, texts=self.process(frame)
-        frame = self.visualizer(frame, boxes, classes, scores, masks, texts)
-        boxes=boxes.tolist()
-        texts=self.text(boxes, texts)
-        return (self.boxes, self.texts)
+            
+        if show :
+            frame = self.visualizer(frame, boxes, classes, scores, masks, texts)
+            cv2.imshow('Results', frame)
+
+        return self.text(boxes.tolist(), texts)
 
     def same_line_boxes(self,box,boxes):
         line_boxes=[]

@@ -19,7 +19,7 @@ class DocumentIdentifier():
 			match = doc_id.match(text)
 			if match is not None:
 				result = match.groupdict()
-				result['Document name'] = doc['name']
+				result['type'] = doc['name']
 				for key, value in result.items():
 					result[key] = value.upper()
 				return result
