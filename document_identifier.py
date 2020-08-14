@@ -168,8 +168,9 @@ def main():
             if not ret:
                 break
         
+            text = text_detector.process(frame, True)
 
-            result=document_identifier.process(text_detector.process(frame))
+            result=document_identifier.process(text)
 
             print(json.dumps(result, indent=4))
 
