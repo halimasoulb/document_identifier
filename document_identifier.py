@@ -78,6 +78,12 @@ def build_argparser():
                           help='Required. Path to an .xml file with a trained text recognition model '
                                  '(decoder part).',
                           required=True, type=str, metavar='"<path>"')
+        args.add_argument('-m_fd', '--face_detect_model',
+                          help='Required. Path to an .xml file with a trained Face-Detection model with ',
+                          required=True, type=str, metavar='"<path>"')
+        args.add_argument('-m_lm', '--land_marks_model',
+                          help='Required. Path to an .xml file with a trained Facial-Landmarks model with ',
+                          required=True, type=str, metavar='"<path>"')
         args.add_argument('-i',
                           dest='input_source',
                           help='Required. Path to an image, video file or a numeric camera ID.',
@@ -131,13 +137,6 @@ def build_argparser():
                           help='Required. Path to an .xml file with a trained Mask-RCNN model with '
                                'additional text features output.',
                           required=True, type=str, metavar='"<path>"')
-        args.add_argument('-face_detector', '--config',
-                          help='Required. Path to an .xml file with a trained face detection model with ',
-                          required=True, type=str, metavar='"<path>"')
-        args.add_argument('-face_detector_lm', '--config',
-                          help='Required. Path to an .xml file with a trained facial landmarks model with ',
-                          required=True, type=str, metavar='"<path>"')
-
         return parser
        
 

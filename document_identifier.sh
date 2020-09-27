@@ -35,8 +35,8 @@ python3 ./document_identifier.py \
 	-m_m ./models/intel/$TXT_DETECT_MODEL/FP16/$TXT_DETECT_MODEL.xml \
 	-m_te ./models/intel/$TXT_ENC_MODEL/FP16/$TXT_ENC_MODEL.xml \
 	-m_td ./models/intel/$TXT_DEC_MODEL/FP16/$TXT_DEC_MODEL.xml \
-	-face_detector ./models/intel/$FACE_DETECT_MODEL/FP16/$FACE_DETECT_MODEL.xml \
-	-face_detector_lm ./models/intel/$FACIAL_LAND_MARKS/FP16/$FACIAL_LAND_MARKS.xml \
+	-m_fd ./models/intel/$FACE_DETECT_MODEL/FP16/$FACE_DETECT_MODEL.xml \
+	-m_lm ./models/intel/$FACIAL_LAND_MARKS/FP16/$FACIAL_LAND_MARKS.xml \
 	-c ./config.js \
 	-pt $THRESHOLD \
 	-i $INPUT 
