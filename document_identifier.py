@@ -131,6 +131,13 @@ def build_argparser():
                           help='Required. Path to an .xml file with a trained Mask-RCNN model with '
                                'additional text features output.',
                           required=True, type=str, metavar='"<path>"')
+        args.add_argument('-face_detector', '--config',
+                          help='Required. Path to an .xml file with a trained face detection model with ',
+                          required=True, type=str, metavar='"<path>"')
+        args.add_argument('-face_detector_lm', '--config',
+                          help='Required. Path to an .xml file with a trained facial landmarks model with ',
+                          required=True, type=str, metavar='"<path>"')
+
         return parser
        
 
@@ -142,6 +149,7 @@ def main():
         document_identifier = DocumentIdentifier(args.config)
         web_server = WebServer()
         web_server.start()
+        
 
         try:
             input_source = int(args.input_source)
@@ -175,8 +183,8 @@ def main():
             print(json.dumps(result, indent=4))
 
             while True:
-              web_server.push(result)
-              cv2.waitKey(1000)
+              #web_server.push(result)
+              cv2.waitKey(4000)
 
          
 
