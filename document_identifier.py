@@ -32,6 +32,7 @@ import json
 
 from document_identifier import DocumentIdentifier
 from text_detector import TextDetector 
+from document_aligner import DocumentAligner
 from web_server import WebServer 
 from utils.tracker import StaticIOUTracker
 
@@ -79,10 +80,10 @@ def build_argparser():
                                  '(decoder part).',
                           required=True, type=str, metavar='"<path>"')
         args.add_argument('-m_fd', '--face_detect_model',
-                          help='Required. Path to an .xml file with a trained Face-Detection model with ',
+                          help='Required. Path to an .xml file with a trained Face-Detection model  ',
                           required=True, type=str, metavar='"<path>"')
         args.add_argument('-m_lm', '--land_marks_model',
-                          help='Required. Path to an .xml file with a trained Facial-Landmarks model with ',
+                          help='Required. Path to an .xml file with a trained Facial-Landmarks model  ',
                           required=True, type=str, metavar='"<path>"')
         args.add_argument('-i',
                           dest='input_source',
@@ -146,6 +147,7 @@ def main():
         args = build_argparser().parse_args()
         text_detector = TextDetector(args) 
         document_identifier = DocumentIdentifier(args.config)
+        document_aligner = DocumentAligner(args)
         web_server = WebServer()
         web_server.start()
         
@@ -179,6 +181,8 @@ def main():
 
             result=document_identifier.process(text)
 
+            face_detected=document_aligner.process(frame)
+
             print(json.dumps(result, indent=4))
 
             while True:
@@ -190,7 +194,7 @@ def main():
             key = cv2.waitKey(0)
             esc_code = 27
             if key == esc_code:
-              break
+              breaks
             cv2.destroyAllWindows()
             cap.release()
 
