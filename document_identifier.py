@@ -181,7 +181,7 @@ def main():
 
             result=document_identifier.process(text)
 
-            face_detected=document_aligner.process(frame)
+            face_detected=document_aligner.preprocess(frame)
 
             print(json.dumps(result, indent=4))
 
