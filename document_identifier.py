@@ -176,12 +176,13 @@ def main():
             ret, frame = cap.read()
             if not ret:
                 break
-        
+            
+            frame = document_aligner.preprocess(frame)
+
             text = text_detector.process(frame, True)
 
             result=document_identifier.process(text)
 
-            face_detected=document_aligner.preprocess(frame)
 
             print(json.dumps(result, indent=4))
 
