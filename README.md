@@ -30,6 +30,8 @@ $ ./document_identifier.sh document.jpg
 # How to label the identified Data
 ## Labeled text
 Every text section is labeled with a single boxe and the text detected is written above thanks to the pre-trained OpenVino model text-spotting
+![Uploading Inkedhalimacin_LI.jpg…]()
+
 
 
 
