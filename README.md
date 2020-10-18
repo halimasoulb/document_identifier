@@ -17,5 +17,16 @@ Run the script document_identifier.sh with one input argument, which is the path
 ```bash
 $ ./document_identifier.sh [<documents gallery path>]
 ```
+ON CAMERA
+If you want to run with camera video, set the input to camera number or 0
+```bash
+$ ./document_identifier.sh 0
+```
+ON IMAGE
+If you want to run with image, set path to the input stream
+```bash
+$ ./document_identifier.sh document.jpg
+```
+
 
 
