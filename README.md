@@ -6,11 +6,16 @@ install OpenVino
 ```
 ## Get started :
 ```bash
-git clone https://github.com/halimasoulb/document_identifier
+$ git clone https://github.com/halimasoulb/document_identifier
 ```
 ```bash
-cd document_identifier
+$ cd document_identifier
 ```
 ## How to run :
 Run the script document_identifier.sh with one input argument, which is the path to documents gallery.
+>Just Execute :
+```bash
+$ ./document_identifier.sh [<documents gallery path>]
+```
+
 
