@@ -32,7 +32,7 @@ $ ./document_identifier.sh document.jpg
   Every text section is labeled with a single boxe and the text detected is written above thanks to the pre-trained OpenVino model text-spotting, to extract the relevant data detected with this models we used a regular expression filter placed in the config.js file all these treatments are done in the textDetector class
 - Labeled face \
   The initial frame is given to DocumentAligner class to align the image when rotated thanks to face-detection-adas-0001 and facial-landmarks-35-adas-0002 OpenVino pre-trained models and other treatments.
--Final result \
+- Final result \
   The final result is shown in the web browser  as data table using flask framework this treatment is carried out in WebServer class
   
 # Identity Document identification Pipeline
