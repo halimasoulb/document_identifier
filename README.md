@@ -34,9 +34,9 @@ $ ./document_identifier.sh document.jpg
   The initial frame is given to DocumentAligner class to align the image when rotated thanks to face-detection-adas-0001 and facial-landmarks-35-adas-0002 OpenVino pre-trained models and other treatments.
 - Final result \
   The final result is shown in the web browser  as data table using flask framework this treatment is carried out in WebServer class \
->Before loading data to the browser \
+###### Before loading data to the browser 
   ![WhatsApp Image 2020-10-21 at 12 24 05](https://user-images.githubusercontent.com/47951591/96720260-75fbd480-13a2-11eb-98d9-0a41c6c992bf.jpeg)
->After loading data \
+###### After loading data 
   ![hihi](https://user-images.githubusercontent.com/47951591/96720812-279b0580-13a3-11eb-8b70-f14e7726075e.png)
 
 
